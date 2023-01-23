@@ -368,8 +368,7 @@ rfatten_input.grid(column=1, row=9)
 set_rfatten = tk.Button(main, text="更改数据", command=set_rfatten)
 set_rfatten.grid(column=2, row=9)
 
-
-# #语法需要
+#语法需要
 main.mainloop()
 
 
