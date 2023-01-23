@@ -9,10 +9,16 @@ import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
-import time
 #导入所需库
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#@@@@@@@@@@@@@@@@@@@@@@ 运行需根据系统选择 @@@@@@@@@@@@@@@@@@@@@@
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 plt.rcParams['font.sans-serif']=['Songti SC'] #macOS用来正常显示中文标签
 #plt.rcParams['font.sans-serif']=['SimHei'] #Windows用来正常显示中文标签
+
+
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 main = tk.Tk()#窗体创建
 main.minsize(350,250)#设置窗体大小
@@ -82,6 +88,7 @@ def lj():
     ts_ip.config(state="disabled")
     set_ip.config(state="disabled")
     ljb.config(state="disabled")
+
 def refresh():
     #定义刷新函数
     #重新连接设备并读取数据
@@ -248,29 +255,18 @@ def pic():
         data.append([float(i) for i in trac1data.strip().split(',')])
     
     #绘制频谱图————————————————————————————
-    #x=np.array(range(int(float(starF[:-1])/1000),int(float(stopF[:-1])/1000),20))
-    #x=np.array(int(float(stopF[:-1])/1000))
     data = np.array(data)
-    #x=range(int(float(starF[:-1])/1000000),int(float(stopF[:-1])/1000000),2)
     a.set_title("频谱图")
-    #a.set_xticks(np.arange(88, 108, step=2))
     a.set_xlabel('点数') #设置X坐标名称（应当改为频率值）
     a.set_ylabel('电平:dBm') #设置Y坐标名称
     a.grid()
     a.plot(data.T, color="yellow", linewidth=0.8)
-    #a.plot(x,data)
 
-    # 在前面得到的子图上绘图
-    #a.plot(x, y, color='blue')
 
     # 将绘制的图形显示到tkinter:创建属于main的canvas画布,并将图f置于画布上
     canvas = FigureCanvasTkAgg(f, master=main)
     canvas.draw()  # 注意show方法已经过时了,这里改用draw
     canvas.get_tk_widget().grid(column=4, row=1, rowspan=9)
-    # matplotlib的导航工具栏显示上来(默认是不会显示它的)
-    #toolbar = NavigationToolbar2Tk(canvas, main)
-    #toolbar.update()
-    #canvas._tkcanvas.grid(column=4, row=1, rowspan=9)
 
 
 #频谱仪连接
@@ -371,14 +367,6 @@ rfatten_input.grid(column=1, row=9)
 #设置衰减值按键
 set_rfatten = tk.Button(main, text="更改数据", command=set_rfatten)
 set_rfatten.grid(column=2, row=9)
-
-
-
-
-# matplotlib的导航工具栏显示上来(默认是不会显示它的)
-#toolbar = NavigationToolbar2Tk(canvas, main)
-#toolbar.update()
-#canvas._tkcanvas.grid(column=4, row=1, rowspan=9)
 
 
 # #语法需要
