@@ -15,14 +15,13 @@ from matplotlib.figure import Figure
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #@@@@@@@@@@@@@@@@@@@@@@ 运行需根据系统选择 @@@@@@@@@@@@@@@@@@@@@@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-plt.rcParams['font.sans-serif']=['Songti SC'] #macOS用来正常显示中文标签
-#plt.rcParams['font.sans-serif']=['SimHei'] #Windows用来正常显示中文标签
+#plt.rcParams['font.sans-serif']=['Songti SC'] #macOS用来正常显示中文标签
+plt.rcParams['font.sans-serif']=['SimHei'] #Windows用来正常显示中文标签
 
 
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 main = tk.Tk()#窗体创建
 main.minsize(350,250)#设置窗体大小
-#main.resizable(False, False)
 main.title("Python Simple Signal Analyzer Controller 1.0.0")#设置窗体名称
 
 
@@ -368,7 +367,4 @@ rfatten_input.grid(column=1, row=9)
 set_rfatten = tk.Button(main, text="更改数据", command=set_rfatten)
 set_rfatten.grid(column=2, row=9)
 
-#语法需要
 main.mainloop()
-
-
